@@ -85,6 +85,8 @@ module.exports = {
     ],
   },
 
+  devtool: 'inline-source-map',
+
   devServer: {
     contentBase: './dist', // (https://stackoverflow.com/questions/49290082/setting-up-react-on-the-front-end-and-express-js-as-a-server-with-webpack-4)
     historyApiFallback: true, // more info (https://github.com/bripkens/connect-history-api-fallback)

@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.config.js --mode production",
-    "start": "webpack-dev-server --config webpack.config.dev.js --hot"
+    "start": "webpack-dev-server --config webpack.config.dev.js --mode development --hot"
   },
   "keywords": [],
   "author": "Zachary Holman",
@@ -33,7 +33,6 @@
     "postcss-loader": "^2.1.3",
     "precss": "^3.1.2",
     "progress-bar-webpack-plugin": "^1.11.0",
-    "react-hot-loader": "^4.0.1",
     "sass-loader": "^6.0.7",
     "style-loader": "^0.20.3",
     "url-loader": "^1.0.1",
@@ -49,6 +48,7 @@
     "popper.js": "^1.14.2",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
+    "react-hot-loader": "^4.0.1",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2"
   },
