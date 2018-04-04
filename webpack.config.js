@@ -2,6 +2,8 @@ const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackTemplate = require('html-webpack-template');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
   mode: 'production',
@@ -103,5 +105,7 @@ module.exports = {
       ],
       bodyHtmlSnippet: '<div class="container"></div>',
     }),
+    new ProgressBarPlugin(),
+    new BundleAnalyzerPlugin({ openAnalyzer: false }),
   ],
 };
