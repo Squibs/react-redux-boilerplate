@@ -1,0 +1,13 @@
+{
+  "name": "react-redux-boilerplate",
+  "private": true,
+  "sideEffects": false,
+  "version": "1.0.0",
+  "description": "A personal starting point for my own React-Redux projects.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Zachary Holman",
+  "license": "ISC"
+}
