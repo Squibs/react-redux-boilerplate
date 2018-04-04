@@ -24,6 +24,7 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0",
+    "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
     "html-webpack-template": "^6.2.0",
     "node-sass": "^4.8.3",
@@ -31,6 +32,7 @@
     "precss": "^3.1.2",
     "sass-loader": "^6.0.7",
     "style-loader": "^0.20.3",
+    "url-loader": "^1.0.1",
     "webpack": "^4.4.1",
     "webpack-cli": "^2.0.13"
   },

@@ -55,6 +55,21 @@ module.exports = {
         ],
       },
 
+      {
+        test: /\.(woff2?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/i,
+        include: /webfonts/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              name: 'webfonts/[name].[ext]',
+              limit: 10000,
+              fallback: 'file-loader',
+            },
+          },
+        ],
+      },
+
     ],
   },
 
