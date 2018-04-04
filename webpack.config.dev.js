@@ -3,10 +3,9 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackTemplate = require('html-webpack-template');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
 
   entry: {
     app: './src/index.jsx',
@@ -36,6 +35,7 @@ module.exports = {
               ['@babel/preset-env', { modules: false }],
               '@babel/preset-react',
             ],
+            plugins: ['react-hot-loader/babel'],
           },
         },
       },
@@ -85,6 +85,16 @@ module.exports = {
     ],
   },
 
+  devServer: {
+    contentBase: './dist', // (https://stackoverflow.com/questions/49290082/setting-up-react-on-the-front-end-and-express-js-as-a-server-with-webpack-4)
+    historyApiFallback: true, // more info (https://github.com/bripkens/connect-history-api-fallback)
+    hot: true,
+    host: '0.0.0.0',
+    port: 8080,
+    open: false,
+    overlay: true,
+  },
+
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({ // list of options (https://github.com/jantimon/html-webpack-plugin#options)
@@ -100,6 +110,5 @@ module.exports = {
       bodyHtmlSnippet: '<div class="container"></div>',
     }),
     new ProgressBarPlugin(),
-    new BundleAnalyzerPlugin({ openAnalyzer: false }),
   ],
 };
