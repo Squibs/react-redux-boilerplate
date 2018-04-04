@@ -39,6 +39,17 @@ module.exports = {
         },
       },
 
+      {
+        test: /\.s?css$/i,
+        use: [
+          // use mini-css-extract-plugin over extract-text-webpack-plugin for Webpack 4 (https://github.com/webpack-contrib/mini-css-extract-plugin)
+          { loader: 'style-loader' }, // adds CSS to the DOM by injecting a '<style>' tag.
+          { loader: 'css-loader' }, // interprets '@import' and 'url()' like 'import/require()' and will resolve them.
+          { loader: 'postcss-loader' }, // adds vendor prefixes; plugins (https://github.com/postcss/postcss)
+          { loader: 'sass-loader' }, // compiles Sass to CSS; uses node-sass (https://github.com/sass/node-sass)
+        ],
+      },
+
     ],
   },
 
