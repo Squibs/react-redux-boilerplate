@@ -36,6 +36,7 @@ module.exports = {
               ['@babel/preset-env', { modules: false }],
               '@babel/preset-react',
             ],
+            // setting NODE_ENV=development: use & (https://stackoverflow.com/a/33755445)
           },
         },
       },

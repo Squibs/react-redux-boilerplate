@@ -36,6 +36,7 @@ module.exports = {
               '@babel/preset-react',
             ],
             plugins: ['react-hot-loader/babel'],
+            // setting NODE_ENV=development: use & (https://stackoverflow.com/a/33755445)
           },
         },
       },
