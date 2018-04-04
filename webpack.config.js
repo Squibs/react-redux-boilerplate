@@ -1,4 +1,7 @@
 const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackTemplate = require('html-webpack-template');
 
 module.exports = {
   mode: 'production',
@@ -28,7 +31,7 @@ module.exports = {
           loader: 'babel-loader', // (https://github.com/babel/babel-loader)
           options: {
             babelrc: false,
-            presets: [
+            presets: [ // presets run rtl
               ['@babel/preset-env', { modules: false }],
               '@babel/preset-react',
             ],
@@ -38,4 +41,20 @@ module.exports = {
 
     ],
   },
+
+  plugins: [
+    new CleanWebpackPlugin(['dist']),
+    new HtmlWebpackPlugin({
+      inject: false,
+      template: HtmlWebpackTemplate,
+      title: 'React Redux Boilerplate',
+      meta: [
+        {
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1, shrink-to-fit=no',
+        },
+      ],
+      bodyHtmlSnippet: '<div class="container"></div>',
+    }),
+  ],
 };
