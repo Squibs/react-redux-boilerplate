@@ -3,50 +3,45 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackTemplate = require('html-webpack-template');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
-  mode: 'production',
-
   entry: {
-    app: './src/index.jsx',
+    app: path.resolve(__dirname, './src/index.jsx'), // could put index.scss as entry point; just remove src/index.jsx import of stylesheet
   },
 
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, './dist'),
   },
 
   resolve: {
     extensions: ['.js', '.jsx'],
   },
 
+  /* =================================================================
+   * !!!!!!!!! REMEMBER package.json -> sideEffects property !!!!!!!!!
+   * ================================================================= */
   module: {
     rules: [
 
-      // (https://github.com/babel/babel)
-      {
+      { // (https://github.com/babel/babel)
         test: /\.jsx?$/i,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader', // (https://github.com/babel/babel-loader)
-          options: {
-            babelrc: false,
-            presets: [ // presets run rtl
-              ['@babel/preset-env', { modules: false }],
-              '@babel/preset-react',
-            ],
-            // setting NODE_ENV=development: use & (https://stackoverflow.com/a/33755445)
-          },
-        },
-      },
+        use: { loader: 'babel-loader' }, // (https://github.com/babel/babel-loader)
+      }, // setting NODE_ENV=development: use '&' (probably not needed in Webpack 4) (https://stackoverflow.com/a/33755445)
 
       {
         test: /\.s?css$/i,
         use: [
           // use mini-css-extract-plugin over extract-text-webpack-plugin for Webpack 4 (https://github.com/webpack-contrib/mini-css-extract-plugin)
-          { loader: 'style-loader' }, // adds CSS to the DOM by injecting a '<style>' tag.
-          { loader: 'css-loader' }, // interprets '@import' and 'url()' like 'import/require()' and will resolve them.
+          // purpose of extracting (https://github.com/webpack-contrib/mini-css-extract-plugin/issues/42)
+          // { loader: 'style-loader' }, // adds CSS to the DOM by injecting a '<style>' tag.
+          {
+            loader: 'css-loader', // interprets '@import' and 'url()' like 'import/require()' and will resolve them.
+            options: {
+              minimize: true,
+            },
+          },
           { loader: 'postcss-loader' }, // adds vendor prefixes; plugins (https://github.com/postcss/postcss)
           { loader: 'sass-loader' }, // compiles Sass to CSS; uses node-sass (https://github.com/sass/node-sass)
         ],
@@ -101,6 +96,5 @@ module.exports = {
       bodyHtmlSnippet: '<div class="container"></div>',
     }),
     new ProgressBarPlugin(),
-    new BundleAnalyzerPlugin({ openAnalyzer: false }),
   ],
 };
