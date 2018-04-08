@@ -33,7 +33,11 @@ module.exports = merge.smart(common, {
       filename: 'css/[name].css',
       chunkFilename: 'css/[id].css',
     }),
-    new BundleAnalyzerPlugin({ openAnalyzer: false }),
+    new BundleAnalyzerPlugin({
+      openAnalyzer: false,
+      analyzerMode: 'static',
+      reportFilename: '~bundle-report~.html',
+    }),
     new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify('production') }), // probably unnecessary
   ],
 });
