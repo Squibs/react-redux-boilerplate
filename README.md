@@ -2,6 +2,8 @@
 
 A personal starting point for my own React projects. For now this is a slight variation/bootstrap of Stephen Grider's [ReduxSimpleStarter](https://github.com/StephenGrider/ReduxSimpleStarter). I am aiming to evolve this boilerplate overtime, as I learn, to suite myself.
 
+If nothing else this will simply serve to help me understand Webpack more.
+
 ---
 ---
 
