@@ -16,7 +16,7 @@ module.exports = merge.smart(common, {
   devtool: 'source-map', // (https://webpack.js.org/configuration/devtool/)
 
   optimization: { // about optimization (https://medium.com/webpack/webpack-4-mode-and-optimization-5423a6bc597a)
-    splitChunks: {
+    splitChunks: { // CommonsChunkPlugin is now SplitChunksPlugin (https://webpack.js.org/plugins/split-chunks-plugin/)
       cacheGroups: {
         styles: {
           name: 'bundle',
@@ -30,8 +30,8 @@ module.exports = merge.smart(common, {
 
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css',
+      filename: 'css/[name].css',
+      chunkFilename: 'css/[id].css',
     }),
     new BundleAnalyzerPlugin({ openAnalyzer: false }),
     new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify('production') }), // probably unnecessary

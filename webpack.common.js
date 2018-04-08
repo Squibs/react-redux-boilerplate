@@ -10,7 +10,8 @@ module.exports = {
   },
 
   output: {
-    filename: '[name].bundle.js',
+    filename: 'js/[name].bundle.js',
+    chunkFilename: 'js/vendors/[name].bundle.js', // code splitting (https://webpack.js.org/guides/code-splitting/)
     path: path.resolve(__dirname, './dist'),
   },
 
