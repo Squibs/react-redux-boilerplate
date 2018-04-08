@@ -16,19 +16,6 @@ ReactDOM.render(
   document.querySelector('.container'),
 );
 
-// // example of dynamic import
-// function getComponent() {
-//   return import(/* webpackChunkName: "lodash" */ 'lodash').then(_ => {
-//     const element = document.createElement('div');
-//     element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-//     return element;
-//   }).catch(error => 'An error occurred while loading the component');
-// }
-
-// getComponent().then(component => {
-//   document.body.appendChild(component);
-// });
-
 // example of dynamic import using Syntax Dynamic Import Babel plugin (see .babelrc)
 async function getComponent() {
   const element = document.createElement('div');
@@ -51,6 +38,6 @@ getComponent().then((component) => {
 //   }).catch(error => 'An error occurred while loading the component');
 // }
 
-// example /* */ ()
-
-//   return import(/* webpackChunkName: "lodash" */ 'lodash').then(_ => {
+// getComponent().then(component => {
+//   document.body.appendChild(component);
+// });
