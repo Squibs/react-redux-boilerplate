@@ -18,9 +18,14 @@ module.exports = merge.smart(common, {
   optimization: { // about optimization (https://medium.com/webpack/webpack-4-mode-and-optimization-5423a6bc597a)
     splitChunks: { // CommonsChunkPlugin is now SplitChunksPlugin (https://webpack.js.org/plugins/split-chunks-plugin/)
       cacheGroups: {
-        styles: {
-          name: 'bundle',
+        commons: { // splitting node modules as vendor bundle (https://survivejs.com/webpack/building/bundle-splitting/)
+          test: /[\\/]node_modules[\\/]/i,
+          name: 'vendor',
+          chunks: 'initial',
+        },
+        styles: { // for mini-css-extract-plugin
           test: /\.css$/i,
+          name: 'styles',
           chunks: 'all',
           enforce: true,
         },

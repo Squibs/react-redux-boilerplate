@@ -6,12 +6,12 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, './src/index.jsx'), // could put index.scss as entry point; just remove src/index.jsx import of stylesheet
+    app: path.resolve(__dirname, './src/index.jsx'),
   },
 
   output: {
-    filename: 'js/[name].bundle.js',
-    chunkFilename: 'js/vendors/[name].bundle.js', // code splitting (https://webpack.js.org/guides/code-splitting/)
+    filename: 'js/[name].js',
+    chunkFilename: 'js/chunks/[name].js', // code splitting (https://webpack.js.org/guides/code-splitting/)
     path: path.resolve(__dirname, './dist'),
   },
 

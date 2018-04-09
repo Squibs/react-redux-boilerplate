@@ -16,28 +16,6 @@ ReactDOM.render(
   document.querySelector('.container'),
 );
 
-// example of dynamic import using Syntax Dynamic Import Babel plugin (see .babelrc)
-async function getComponent() {
-  const element = document.createElement('div');
-  const _ = await import(/* webpackChunkName: "lodash" */ 'lodash');
-
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  return element;
-}
-
-getComponent().then((component) => {
-  document.body.appendChild(component);
-});
-
-// // example of dynamic import
-// function getComponent() {
-//   return import(/* webpackChunkName: "lodash" */ 'lodash').then(_ => {
-//     const element = document.createElement('div');
-//     element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-//     return element;
-//   }).catch(error => 'An error occurred while loading the component');
-// }
-
-// getComponent().then(component => {
-//   document.body.appendChild(component);
-// });
+// information about code splitting/lazy-loading (https://engineering.innovid.com/code-splitting-using-lazy-loading-with-react-redux-typescript-and-webpack-4-3ec60140ec5a)
+// using react-loadable (https://github.com/jamiebuilds/react-loadable)
+// also has a lot of great references to learn more
