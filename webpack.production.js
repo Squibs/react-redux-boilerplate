@@ -31,7 +31,11 @@ module.exports = merge.smart(common, {
         },
       },
     },
-  }, // blog about upgrading to v4 and optimization (https://bluebottle.idv.tw/?p=12482)
+    // webpack runtime can be put into any chunk, 'runtimeChunk: name: 'manifest',' is not really needed (https://medium.com/webpack/webpack-4-changes-part-1-week-24-25-fd4d77674e55#dbe8)
+    // runtimeChunk: { // (https://survivejs.com/webpack/optimizing/separating-manifest/)
+    //   name: 'manifest',
+    // },
+  }, // journal entry about upgrading to v4 and optimization (https://bluebottle.idv.tw/?p=12482)
 
   plugins: [
     new MiniCssExtractPlugin({
