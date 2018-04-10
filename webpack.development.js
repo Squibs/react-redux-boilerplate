@@ -20,8 +20,7 @@ module.exports = merge.smart(common, {
     overlay: true,
   },
 
-  optimization: {
+  optimization: { // options turned on by default per mode (https://medium.com/webpack/webpack-4-mode-and-optimization-5423a6bc597a)
     nodeEnv: 'development',
-    minimize: false,
   },
 });

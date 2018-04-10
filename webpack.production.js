@@ -16,9 +16,8 @@ module.exports = merge.smart(common, {
 
   // recordsPath: path.join(__dirname, "records.json"),
 
-  optimization: { // about optimization (https://medium.com/webpack/webpack-4-mode-and-optimization-5423a6bc597a)
+  optimization: { // options turned on by default per mode (https://medium.com/webpack/webpack-4-mode-and-optimization-5423a6bc597a)
     nodeEnv: 'production', // (https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size)
-    minimize: true,
     splitChunks: { // CommonsChunkPlugin is now SplitChunksPlugin (https://webpack.js.org/plugins/split-chunks-plugin/)
       cacheGroups: {
         commons: { // splitting node modules as vendor bundle (https://survivejs.com/webpack/building/bundle-splitting/)

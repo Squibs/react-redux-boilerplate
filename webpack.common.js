@@ -71,7 +71,7 @@ module.exports = {
             loader: 'url-loader', // if the image is small enough: turns image into `base64` encoded URL
             options: {
               name: 'img/[name].[ext]',
-              limit: 10000,
+              limit: 10 * 1024,
               fallback: 'file-loader', // use in development; emit required object as file and return its public URL
             },
           },
