@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.common');
 
@@ -7,7 +6,7 @@ common.module.rules[1].use.unshift({ loader: 'style-loader' });
 
 // DEVELOPMENT
 module.exports = merge.smart(common, {
-  mode: 'development',
+  mode: 'development', // (https://developers.google.com/web/fundamentals/performance/webpack/decrease-frontend-size)
 
   devtool: 'inline-source-map', // (https://webpack.js.org/configuration/devtool/)
 
@@ -21,7 +20,8 @@ module.exports = merge.smart(common, {
     overlay: true,
   },
 
-  plugins: [
-    new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify('development') }), // probably unnecessary
-  ],
+  optimization: {
+    nodeEnv: 'development',
+    minimize: false,
+  },
 });
