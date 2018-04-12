@@ -1,7 +1,8 @@
 const path = require('path');
+const HtmlWebpackTemplate = require('html-webpack-template');
+
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackTemplate = require('html-webpack-template');
 const WebpackInlineManifestPlugin = require('webpack-inline-manifest-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 

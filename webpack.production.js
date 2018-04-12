@@ -1,5 +1,6 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common');
+const webpack = require('webpack');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
@@ -48,5 +49,6 @@ module.exports = merge.smart(common, {
       analyzerMode: 'static',
       reportFilename: '~bundle-report.html',
     }),
+    new webpack.HashedModuleIdsPlugin(),
   ],
 });
