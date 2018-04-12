@@ -2,6 +2,7 @@ const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackTemplate = require('html-webpack-template');
+const WebpackInlineManifestPlugin = require('webpack-inline-manifest-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 module.exports = {
@@ -95,7 +96,9 @@ module.exports = {
         },
       ],
       bodyHtmlSnippet: '<div class="container"></div>',
+      inlineManifestWebpackName: 'webpackManifest',
     }),
+    new WebpackInlineManifestPlugin(), // using a fork of inline-manifest-webpack-plugin for webpack 4 (https://github.com/szrenwei/inline-manifest-webpack-plugin/issues/10)
     new ProgressBarPlugin(),
   ],
 };

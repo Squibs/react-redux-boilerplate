@@ -8358,7 +8358,7 @@ source-map-support@^0.4.15:
   dependencies:
     source-map "^0.5.6"
 
-source-map-url@^0.4.0:
+source-map-url@0.4.0, source-map-url@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/source-map-url/-/source-map-url-0.4.0.tgz#3e935d7ddd73631b97659956d55128e87b5084a3"
 
@@ -9438,6 +9438,12 @@ webpack-dev-server@^3.1.3:
     webpack-dev-middleware "3.1.2"
     webpack-log "^1.1.2"
     yargs "11.0.0"
+
+webpack-inline-manifest-plugin@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/webpack-inline-manifest-plugin/-/webpack-inline-manifest-plugin-4.0.1.tgz#4fc843fcf076e8512f167dc705108b3eacafc098"
+  dependencies:
+    source-map-url "0.4.0"
 
 webpack-log@^1.0.1, webpack-log@^1.1.2:
   version "1.2.0"
