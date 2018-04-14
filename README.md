@@ -10,22 +10,12 @@ If nothing else this boilerplate will simply serve to help me understand Webpack
 
 <!-- TOC -->
 
-- [Features](#features)
 - [File Structure](#file-structure)
 - [Scripts](#scripts)
 - [Notable Sources](#notable-sources)
 - [Current Known Issues](#current-known-issues)
 
 <!-- /TOC -->
-
----
-
-## Features
-
-- Bundling and file optimization using **Webpack 4**.
-- Linting with **ESLint** using **Airbnb's .eslintrc** configuration.
-- 
-
 
 ---
 
