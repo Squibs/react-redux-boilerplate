@@ -5,6 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackInlineManifestPlugin = require('webpack-inline-manifest-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -100,6 +101,28 @@ module.exports = {
       inlineManifestWebpackName: 'webpackManifest',
     }),
     new WebpackInlineManifestPlugin(), // using a fork of inline-manifest-webpack-plugin for webpack 4 (https://github.com/szrenwei/inline-manifest-webpack-plugin/issues/10)
+    new FaviconsWebpackPlugin({ // generates favicons (https://github.com/jantimon/favicons-webpack-plugin)
+      logo: './assets/images/favicon.svg',
+      prefix: 'favicons/',
+      emitStats: false,
+      statsFilename: 'iconstats-[hash].json',
+      persistentCache: true,
+      inject: true,
+      backgrond: '#fff',
+      title: 'React Redux Boilerplate',
+      icons: {
+        android: false,
+        appleIcon: false,
+        appleStartup: false,
+        coast: false,
+        favicons: true,
+        firefox: false,
+        opengraph: false,
+        twitter: false,
+        yandex: false,
+        windows: false,
+      },
+    }),
     new ProgressBarPlugin(),
   ],
 };
