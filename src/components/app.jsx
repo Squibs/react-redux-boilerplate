@@ -8,7 +8,7 @@ import BoilerplateInfo from './boilerplate_info';
 class App extends Component {
   render() {
     return (
-      <div id="DynamicExample">
+      <div>
         <BoilerplateInfo />
       </div>
     );
