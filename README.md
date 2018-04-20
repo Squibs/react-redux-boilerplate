@@ -110,3 +110,6 @@ There were a few sources of information about Webpack 4 (or Webpack in general) 
     Cannot use [chunkhash] or [contenthash] for chunk in '[name]-[chunkhash].js' (use [hash] instead)
     ```
     3. CSS for the app is now not named app.css, but instead uses the id for the app.bundle.
+
+- When using axios, there are issues with IE11 and probably before. [Issue.](https://github.com/axios/axios/issues/135)
+     - This problem is already solved, and requires polyfilling `Promise` using es6-promise.
