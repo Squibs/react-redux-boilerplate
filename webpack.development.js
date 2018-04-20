@@ -1,7 +1,8 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common');
 
-// add style-loader for HMR (necessary until mini-css-extract-plugin supports HMR)
+// use style-loader over mini-css-extract-plugin in development for HMR
+// (necessary until mini-css-extract-plugin supports HMR)
 common.module.rules[1].use.unshift({ loader: 'style-loader' });
 
 // DEVELOPMENT

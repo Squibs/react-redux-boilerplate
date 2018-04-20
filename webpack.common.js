@@ -39,7 +39,6 @@ module.exports = {
         use: [
           // use mini-css-extract-plugin over extract-text-webpack-plugin for Webpack 4 (https://github.com/webpack-contrib/mini-css-extract-plugin)
           // purpose of extracting (https://github.com/webpack-contrib/mini-css-extract-plugin/issues/42)
-          // { loader: 'style-loader' }, // adds CSS to the DOM by injecting a '<style>' tag.
           {
             loader: 'css-loader', // interprets '@import' and 'url()' like 'import/require()' and will resolve them.
             options: {

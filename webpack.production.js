@@ -5,7 +5,8 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
-// add mini-css-extract-plugin to create separate CSS not in JS bundle
+// use mini-css-extract-plugin over extract-text-webpack-plugin for Webpack 4 (https://github.com/webpack-contrib/mini-css-extract-plugin)
+// purpose of extracting (https://github.com/webpack-contrib/mini-css-extract-plugin/issues/42)
 // (necessary until mini-css-extract-plugin supports HMR)
 common.module.rules[1].use.unshift({
   loader: MiniCssExtractPlugin.loader,
@@ -46,8 +47,8 @@ module.exports = merge.smart(common, {
 
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
-      chunkFilename: 'css/[id].css',
+      filename: 'css/[name].[hash].css',
+      chunkFilename: 'css/[id].[hash].css',
     }),
     new BundleAnalyzerPlugin({
       openAnalyzer: false,
