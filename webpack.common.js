@@ -1,11 +1,16 @@
 const path = require('path');
 const HtmlWebpackTemplate = require('html-webpack-template');
 
+// webpack plugins
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackInlineManifestPlugin = require('webpack-inline-manifest-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+
+// postcss plugins
+const autoprefixer = require('autoprefixer');
+const precss = require('precss');
 
 module.exports = {
   entry: {
@@ -28,24 +33,31 @@ module.exports = {
   module: {
     rules: [
 
-      { // (https://github.com/babel/babel)
+      { // repository babel is moving everything to (https://github.com/babel/babel)
         test: /\.jsx?$/i,
         exclude: /node_modules/,
-        use: { loader: 'babel-loader' }, // (https://github.com/babel/babel-loader)
+        use: { loader: 'babel-loader' }, // transpiles .js files (https://github.com/babel/babel-loader)
       }, // setting NODE_ENV=development: use '&' (probably not needed in Webpack 4) (https://stackoverflow.com/a/33755445)
 
       {
         test: /\.s?css$/i,
         use: [
-          // use mini-css-extract-plugin over extract-text-webpack-plugin for Webpack 4 (https://github.com/webpack-contrib/mini-css-extract-plugin)
-          // purpose of extracting (https://github.com/webpack-contrib/mini-css-extract-plugin/issues/42)
           {
             loader: 'css-loader', // interprets '@import' and 'url()' like 'import/require()' and will resolve them.
             options: {
               minimize: true,
             },
           },
-          { loader: 'postcss-loader' }, // adds vendor prefixes; plugins (https://github.com/postcss/postcss)
+          {
+            loader: 'postcss-loader', // adds vendor prefixes; plugins (https://github.com/postcss/postcss)
+            options: {
+              ident: 'postcss',
+              plugins: () => [
+                autoprefixer(),
+                precss(),
+              ],
+            },
+          },
           { loader: 'sass-loader' }, // compiles Sass to CSS; uses node-sass (https://github.com/sass/node-sass)
         ],
       },
