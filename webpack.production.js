@@ -7,7 +7,12 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 // add mini-css-extract-plugin to create separate CSS not in JS bundle
 // (necessary until mini-css-extract-plugin supports HMR)
-common.module.rules[1].use.unshift({ loader: MiniCssExtractPlugin.loader });
+common.module.rules[1].use.unshift({
+  loader: MiniCssExtractPlugin.loader,
+  options: {
+    publicPath: '../',
+  },
+});
 
 // PRODUCTION
 module.exports = merge.smart(common, {
