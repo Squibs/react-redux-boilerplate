@@ -62,5 +62,15 @@
   },
   "browserslist": [
     "last 2 versions"
-  ]
+  ],
+  "eslintConfig": {
+    "extends": "airbnb",
+    "parser": "babel-eslint",
+    "env": {
+      "browser": true
+    },
+    "rules": {
+      "func-names": ["error", "never"]
+    }
+  }
 }
