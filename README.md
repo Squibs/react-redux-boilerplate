@@ -29,8 +29,6 @@ For future reference (switching from function-first to feature-first folder stru
 
 *With the above in mind, I currently have an assets folder that is separate from the `src` folder to house css and other files not directly related react/redux files. After a few projects to help me better understand React/Redux I can hopefully correct this and switch to a more component based structure.*
 
-*Another example of folder structure (for future reference) [Angular Starter](https://github.com/paasplatform/idp-service).*
-
 ```
 react-redux-boilerplate/
 ├──assets/                        * any files not related to react/redux
@@ -59,6 +57,14 @@ react-redux-boilerplate/
 ├──webpack.production.js          * webpack configuration options for production
 └──yarn.lock                      * stores dependency versions and other other important information
 ```
+
+*Another example of folder structure (for future reference) [Angular Starter](https://github.com/paasplatform/idp-service).*
+
+--
+
+Also look into using [Aphrodite](https://github.com/Khan/aphrodite); already using Airbnb eslint rules, might as well follow through and use component-based styling as well. Found while looking into [stylelint rules](https://github.com/airbnb/css/issues/45#issuecomment-310527115).
+
+[Airbnb CSS-in-JavaScript Style Guide](https://github.com/airbnb/javascript/tree/master/css-in-javascript) and [CSS in JavaScript: The future of component-based styling](https://medium.freecodecamp.org/css-in-javascript-the-future-of-component-based-styling-70b161a79a32).
 
 ---
 
