@@ -66,6 +66,10 @@ Also look into using [Aphrodite](https://github.com/Khan/aphrodite); already usi
 
 [Airbnb CSS-in-JavaScript Style Guide](https://github.com/airbnb/javascript/tree/master/css-in-javascript) and [CSS in JavaScript: The future of component-based styling](https://medium.freecodecamp.org/css-in-javascript-the-future-of-component-based-styling-70b161a79a32).
 
+--
+
+[Better eslint configuration/setup.](https://github.com/airbnb/javascript/issues/1589#issuecomment-344097023)
+
 ---
 
 ## Scripts
