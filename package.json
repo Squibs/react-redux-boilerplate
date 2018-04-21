@@ -72,5 +72,21 @@
     "rules": {
       "func-names": ["error", "never"]
     }
+  },
+  "babel": {
+    "presets": [
+      ["@babel/preset-env", { "modules": false }],
+      "@babel/preset-react"
+    ],
+    "env": {
+      "development": {
+        "plugins": [
+          "react-hot-loader/babel"
+        ]
+      }
+    },
+    "plugins": [
+      "@babel/plugin-syntax-dynamic-import"
+    ]
   }
 }
