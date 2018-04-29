@@ -10,7 +10,7 @@ import path from 'path';
 export default class WebServer {
   constructor() {
     this.app = express();
-    this.app.use(express.static(path.resolve(__dirname, '../../dist')));
+    this.app.get('/', (req, res) => res.send('Hello World!'));
   }
 
   start() {
