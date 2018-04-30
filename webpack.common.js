@@ -19,7 +19,7 @@ module.exports = {
 
   output: {
     filename: 'js/[name].[hash].js',
-    chunkFilename: 'js/chunks/[id]-[name].[chunkhash].js', // code splitting (https://webpack.js.org/guides/code-splitting/)
+    chunkFilename: 'js/chunks/[id]-[name].[chunkhash].js',
     path: path.resolve(__dirname, './dist'),
     publicPath: '/',
   },
@@ -34,23 +34,23 @@ module.exports = {
   module: {
     rules: [
 
-      { // repository babel is moving everything to (https://github.com/babel/babel)
+      {
         test: /\.jsx?$/i,
         exclude: /node_modules/,
-        use: { loader: 'babel-loader' }, // transpiles .js files (https://github.com/babel/babel-loader)
-      }, // setting NODE_ENV=development: use '&' (probably not needed in Webpack 4) (https://stackoverflow.com/a/33755445)
+        use: { loader: 'babel-loader' },
+      },
 
       {
         test: /\.s?css$/i,
         use: [
           {
-            loader: 'css-loader', // interprets '@import' and 'url()' like 'import/require()' and will resolve them.
+            loader: 'css-loader',
             options: {
               minimize: true,
             },
           },
           {
-            loader: 'postcss-loader', // adds vendor prefixes; plugins (https://github.com/postcss/postcss)
+            loader: 'postcss-loader',
             options: {
               ident: 'postcss',
               plugins: () => [
@@ -59,7 +59,7 @@ module.exports = {
               ],
             },
           },
-          { loader: 'sass-loader' }, // compiles Sass to CSS; uses node-sass (https://github.com/sass/node-sass)
+          { loader: 'sass-loader' },
         ],
       },
 
@@ -83,14 +83,14 @@ module.exports = {
         exclude: /webfonts/i,
         use: [
           {
-            loader: 'url-loader', // if the image is small enough: turns image into `base64` encoded URL
+            loader: 'url-loader',
             options: {
               name: 'img/[name].[ext]',
               limit: 10 * 1024,
-              fallback: 'file-loader', // use in development; emit required object as file and return its public URL
+              fallback: 'file-loader',
             },
           },
-          { loader: 'img-loader' }, // minimizes images with imagemin (https://github.com/imagemin/imagemin)
+          { loader: 'img-loader' },
         ],
       },
 
@@ -99,9 +99,9 @@ module.exports = {
 
   plugins: [
     new CleanWebpackPlugin(['dist']),
-    new HtmlWebpackPlugin({ // list of options (https://github.com/jantimon/html-webpack-plugin#options)
+    new HtmlWebpackPlugin({
       inject: false,
-      template: HtmlWebpackTemplate, // better default template for HtmlWebpackPlugin (https://github.com/jaketrent/html-webpack-template)
+      template: HtmlWebpackTemplate,
       title: 'React Redux Boilerplate',
       meta: [
         {
@@ -112,15 +112,15 @@ module.exports = {
       bodyHtmlSnippet: '<div class="container"></div>',
       inlineManifestWebpackName: 'webpackManifest',
     }),
-    new WebpackInlineManifestPlugin(), // using a fork of inline-manifest-webpack-plugin for webpack 4 (https://github.com/szrenwei/inline-manifest-webpack-plugin/issues/10)
-    new FaviconsWebpackPlugin({ // generates favicons (https://github.com/jantimon/favicons-webpack-plugin)
+    new WebpackInlineManifestPlugin(),
+    new FaviconsWebpackPlugin({
       logo: './assets/images/favicon.svg',
       prefix: 'favicons/',
       emitStats: false,
       statsFilename: 'iconstats-[hash].json',
       persistentCache: true,
       inject: true,
-      backgrond: '#fff',
+      background: '#fff',
       title: 'React Redux Boilerplate',
       icons: {
         android: false,

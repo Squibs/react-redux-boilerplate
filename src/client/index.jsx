@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 
-import '../assets/stylesheets/index.scss';
-import App from './components/app';
+import '../../assets/stylesheets/index.scss';
+import App from '../shared/app';
 import reducers from './reducers';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);

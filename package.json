@@ -8,7 +8,8 @@
   "description": "A personal starting point for my own React-Redux projects.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cross-env NODE_ENV=production node scripts/build"
+    "build": "cross-env NODE_ENV=production node scripts/build",
+    "webpack": "webpack --config config/webpack.config.js"
   },
   "keywords": [],
   "author": "Zachary Holman",
@@ -44,6 +45,7 @@
     "progress-bar-webpack-plugin": "^1.11.0",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",
+    "styled-components": "^3.2.6",
     "url-loader": "^1.0.1",
     "webpack": "^4.6.0",
     "webpack-bundle-analyzer": "^2.11.1",
