@@ -1,1 +1,6 @@
-console.log('production/server');
+const baseConfig = require('../shared/server');
+
+module.exports = {
+  ...baseConfig,
+  mode: 'production',
+};
