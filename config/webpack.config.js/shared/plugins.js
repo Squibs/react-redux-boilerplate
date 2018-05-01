@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 
 const HtmlWebpackTemplate = require('html-webpack-template');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -11,7 +12,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const shared = [
-  new CleanWebpackPlugin(['dist']),
+  new CleanWebpackPlugin(
+    ['dist'],
+    { root: path.resolve(__dirname, '../../../') },
+  ),
   new HtmlWebpackPlugin({ // list of options (https://github.com/jantimon/html-webpack-plugin#options)
     inject: false,
     template: HtmlWebpackTemplate,
