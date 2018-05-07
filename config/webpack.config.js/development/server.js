@@ -6,7 +6,7 @@ const config = {
   ...baseConfig,
   plugins: [
     ...baseConfig.plugins,
-    new WriteFileWebpackPlugin(),
+    // new WriteFileWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
   ],
   mode: 'development',

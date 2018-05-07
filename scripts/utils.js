@@ -1,15 +1,5 @@
 const chalk = require('chalk');
 
-const logMessage = (message, level = 'info') => {
-  const color = dangerLevel => ({
-    error: 'red',
-    warning: 'yellow',
-    info: 'white',
-  })[dangerLevel];
-
-  console.log(`[${new Date().toLocaleTimeString()}]`, chalk[color(level)](message));
-};
-
 const formatMessage = (message, isError) => {
   let lines = message.split('\n');
 
@@ -84,7 +74,17 @@ const formatWebpackMessages = (json) => {
   return result;
 };
 
+const logMessage = (message, level = 'info') => {
+  const color = dangerLevel => ({
+    error: 'red',
+    warning: 'yellow',
+    info: 'white',
+  })[dangerLevel];
+
+  console.log(`[${new Date().toLocaleTimeString()}]`, chalk[color(level)](message));
+};
+
 module.exports = {
-  logMessage,
   formatWebpackMessages,
+  logMessage,
 };

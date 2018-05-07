@@ -23,6 +23,7 @@ const build = async () => {
         if (err) {
           return reject(new Error(`${err} - ${whichCompiler}`));
         }
+
         const messages = formatWebpackMessages(stats.toJson({}, true));
 
         if (messages.errors.length) {
@@ -33,8 +34,9 @@ const build = async () => {
           return reject(new Error(`${messages.errors.join('\n\n')} - ${whichCompiler}`));
         }
 
+        // logs messages like webpack would, with added separation
         console.log(`
-          \n\n-------------------
+          -------------------
             ${whichCompiler}
           -------------------\n
           ${stats.toString({ colors: true })}
