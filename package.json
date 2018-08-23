@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-rc.2",
+    "@babel/node": "^7.0.0-rc.2",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0-rc.2",
     "@babel/polyfill": "^7.0.0-rc.2",
     "@babel/preset-env": "^7.0.0-rc.2",
