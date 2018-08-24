@@ -6,7 +6,7 @@
   "author": "Zachary Holman",
   "license": "ISC",
   "scripts": {
-    "build": "cross-env NODE_ENV=production node scripts/build.js",
+    "build": "cross-env NODE_ENV=production babel-node scripts/build.js",
     "start": "cross-env NODE_ENV=development node --trace-deprecation scripts/start.js",
     "webpack": "cross-env NODE_ENV=production webpack --config config/webpack.config.js"
   },
@@ -14,7 +14,7 @@
     "@babel/core": "^7.0.0-rc.2",
     "@babel/node": "^7.0.0-rc.2",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0-rc.2",
-    "@babel/polyfill": "^7.0.0-rc.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.0.0-rc.2",
     "@babel/preset-env": "^7.0.0-rc.2",
     "@babel/preset-react": "^7.0.0-rc.2",
     "babel-eslint": "^9.0.0-beta.3",
@@ -48,6 +48,7 @@
     "webpack-hot-middleware": "^2.22.3",
     "webpack-manifest-plugin": "^2.0.3",
     "webpack-node-externals": "^1.7.2",
+    "webpack-visualizer-plugin": "^0.1.11",
     "write-file-webpack-plugin": "^4.3.2"
   },
   "dependencies": {},
@@ -86,7 +87,8 @@
       "@babel/preset-react"
     ],
     "plugins": [
-      "@babel/plugin-syntax-dynamic-import"
+      "@babel/plugin-syntax-dynamic-import",
+      "@babel/plugin-transform-modules-commonjs"
     ]
   }
 }
