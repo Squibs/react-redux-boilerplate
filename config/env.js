@@ -1,18 +1,18 @@
-// all of the following comes from create-react-app (https://github.com/facebook/create-react-app/blob/v1.0.17/packages/react-scripts/config/env.js)
+// much of the following comes from create-react-app (https://github.com/facebook/create-react-app/blob/v1.0.17/packages/react-scripts/config/env.js)
 // (https://github.com/motdotla/dotenv/issues/126#issuecomment-342312305)
 
-const fs = require('fs');
-const path = require('path');
-const paths = require('./paths');
-const dotenv = require('dotenv');
+import * as fs from 'fs';
+import * as path from 'path';
+import dotenv from 'dotenv';
+import paths from './paths';
 
 // make sure that including paths.js after env.js will read .env variables
 delete require.cache[require.resolve('./paths')];
 
 // check for environment variable
-// if (!process.env.NODE_ENV) {
-//   throw new Error('The process.env.NODE_ENV environment variable is required but was not specified.');
-// }
+if (!process.env.NODE_ENV) {
+  throw new Error('The process.env.NODE_ENV environment variable is required but was not specified.');
+}
 
 // other .env files (https://github.com/bkeepers/dotenv#what-other-env-files-can-i-use) [from a Ruby gem repository]
 const dotenvFiles = [
@@ -42,7 +42,7 @@ process.env.NODE_PATH = (process.env.NODE_PATH || '')
   .map(folder => path.resolve(appDirectory, folder))
   .join(path.delimiter);
 
-module.exports = () => {
+export default () => {
   const raw = {
     PORT: process.env.PORT || 8500,
     NODE_ENV: process.env.NODE_ENV || 'development',

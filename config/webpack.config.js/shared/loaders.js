@@ -4,7 +4,7 @@
    ========================================= */
 const babelLoader = { // the repository babel is moving everything to (https://github.com/babel/babel)
   test: /\.jsx?$/i,
-  exclude: /node_moduels/i,
+  exclude: /node_modules/i,
   use: { loader: 'babel-loader' }, // transpiles .js files (https://github.com/babel/babel-loader)
 };
 
@@ -74,7 +74,7 @@ fileLoaderServer.options.emitFile = false;
 
 
 // oneOf: first matching Rule is used when the Rule matches.
-const client = [
+export const client = [
   {
     oneOf: [
       babelLoader,
@@ -85,7 +85,7 @@ const client = [
   },
 ];
 
-const server = [
+export const server = [
   {
     oneOf: [
       babelLoader,
@@ -97,11 +97,7 @@ const server = [
 ];
 
 
-module.exports = {
-  client,
-  server,
-};
-
+/* eslint-disable max-len */
 /* ====================================
    Switched to using styled-components.
    Leaving scss/css loaders for posterity.

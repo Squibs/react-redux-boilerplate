@@ -1,19 +1,21 @@
-const webpack = require('webpack');
-const nodemon = require('nodemon');
-const rimraf = require('rimraf');
-const webpackConfig = require('../config/webpack.config.js')(process.env.NODE_ENV || 'development');
-const webpackDevMiddleware = require('webpack-dev-middleware');
-const webpackHotMiddleware = require('webpack-hot-middleware');
-const express = require('express');
-const paths = require('../config/paths');
-const { logMessage } = require('./utils');
+import webpack from 'webpack';
+import express from 'express';
+import nodemon from 'nodemon';
+import rimraf from 'rimraf';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+import paths from '../config/paths';
+import { logMessage } from './utils';
+import wpConfig from '../config/webpack.config.js';
+
+// wpConfig is a function, want to pass additional parameters to it and store result
+const webpackConfig = wpConfig(process.env.NODE_ENV || 'development');
+
 
 const app = express();
 
 const WEBPACK_PORT = process.env.WEBPACK_PORT || (!Number.isNaN(Number(process.env.PORT))
   ? Number(process.env.PORT) + 1 : 8501);
-
-console.log(WEBPACK_PORT);
 
 const start = async () => {
   // remove builds from dist/
@@ -31,11 +33,15 @@ const start = async () => {
 
   const { publicPath } = clientConfig.output;
 
-  clientConfig.output.publicPath = [`http://localhost:${WEBPACK_PORT}`, publicPath]
-    .join('/').replace(/([^:+])\/+/g, '$1/');
+  clientConfig.output.publicPath = [
+    `http://localhost:${WEBPACK_PORT}`,
+    publicPath,
+  ].join('/').replace(/([^:+])\/+/g, '$1/');
 
-  serverConfig.output.publicPath = [`http://localhost:${WEBPACK_PORT}`, publicPath]
-    .join('/').replace(/([^:+])\/+/g, '$1/');
+  serverConfig.output.publicPath = [
+    `http://localhost:${WEBPACK_PORT}`,
+    publicPath,
+  ].join('/').replace(/([^:+])\/+/g, '$1/');
 
   const multiCompiler = webpack([clientConfig, serverConfig]);
 
@@ -79,9 +85,12 @@ const start = async () => {
 
   app.listen(WEBPACK_PORT);
 
+  console.log(WEBPACK_PORT, '!!!!!!!!!!!!!!!PORT!!!!!!!!!!!!!');
+
   serverCompiler.watch(watchOptions, (error, stats) => {
     if (!error && !stats.hasErrors()) {
       console.log(stats.toString(serverConfig.stats));
+      console.log('NODEMON!!!');
       return;
     }
 
@@ -102,7 +111,6 @@ const start = async () => {
   try {
     await clientPromise;
     await serverPromise;
-    console.log('waited!!!!!!!!!!!!!!!!!!!!!!!!!');
   } catch (error) {
     logMessage(error, 'error');
   }
@@ -119,12 +127,12 @@ const start = async () => {
     });
 
     script.on('quit', () => {
-      logMessage('Process ended');
+      logMessage('Process ended.');
       process.exit();
     });
 
     script.on('error', () => {
-      logMessage('An error occurred. Exiting', 'error');
+      logMessage('An error occurred. Exiting.', 'error');
       process.exit(1);
     });
   });

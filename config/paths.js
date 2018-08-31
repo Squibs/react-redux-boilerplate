@@ -1,5 +1,5 @@
-const path = require('path');
-const fs = require('fs');
+import * as path from 'path';
+import * as fs from 'fs';
 
 // current working directory (process.cwd())
 const appDirectory = fs.realpathSync(process.cwd());
@@ -26,4 +26,4 @@ paths.resolveModules = [
   'node_modules',
 ];
 
-module.exports = paths;
+export default paths;

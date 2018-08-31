@@ -1,11 +1,12 @@
 import express from 'express';
 import cors from 'cors';
-import path from 'path';
 import chalk from 'chalk';
+import * as path from 'path';
 import manifestHelpers from 'express-manifest-helpers';
 import bodyParser from 'body-parser';
-import { configureStore } from '../shared/store';
 import paths from '../../config/paths';
+import { configureStore } from '../shared/store';
+
 
 require('dotenv').config();
 
@@ -27,11 +28,13 @@ app.use((req, res, next) => {
   return next();
 });
 
-app.use(manifestHelpers({ manifestPath: `${paths.clientBuild}/manifest.json` }));
+const manifestPath = path.join(paths.clientBuild, paths.publicPath);
+
+app.use(manifestHelpers({ manifestPath: `${manifestPath}/manifest.json` }));
 
 app.use((err, req, res, next) => {
   return res.status(404).json({
-    satus: 'error',
+    status: 'error',
     message: err.message,
     stack: process.env.NODE_ENV === 'development' &&
       (err.stack || '')

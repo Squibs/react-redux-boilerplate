@@ -1,5 +1,5 @@
-const baseConfig = require('../shared/client.base');
-const webpack = require('webpack');
+import webpack from 'webpack';
+import baseConfig from '../shared/client.base';
 
 const config = {
   ...baseConfig,
@@ -11,4 +11,4 @@ const config = {
   devtool: 'cheap-module-inline-source-map', // (https://webpack.js.org/configuration/devtool/)
 };
 
-module.exports = config;
+export default config;

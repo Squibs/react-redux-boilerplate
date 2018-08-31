@@ -1,16 +1,15 @@
-const path = require('path');
-const nodeExternals = require('webpack-node-externals');
+import * as path from 'path';
+import nodeExternals from 'webpack-node-externals';
+import paths from '../../paths';
+import { server as serverLoaders } from './loaders';
+import resolvers from './resolvers';
+import * as plugins from './plugins';
 
-const paths = require('../../paths');
-const { server: serverLoaders } = require('./loaders');
-const resolvers = require('./resolvers');
-const plugins = require('./plugins');
-
-module.exports = {
+export default {
   name: 'server',
   target: 'node', // (https://webpack.js.org/configuration/target/)
   entry: {
-    server: ['@babel/polyfill', path.resolve(__dirname, '../../../src/server/index.js')],
+    server: [path.resolve(__dirname, '../../../src/server/index.js')],
   },
   externals: [ // don't bundle node_modules on backend (https://github.com/liady/webpack-node-externals)
     nodeExternals({
@@ -25,9 +24,6 @@ module.exports = {
   },
   resolve: { ...resolvers },
   module: { rules: serverLoaders },
-  plugins: [
-    ...plugins.shared,
-    ...plugins.server,
-  ],
+  plugins: [...plugins.shared, ...plugins.server],
   stats: { colors: true },
 };

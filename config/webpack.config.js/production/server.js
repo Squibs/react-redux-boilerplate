@@ -1,6 +1,6 @@
-const baseConfig = require('../shared/server.base');
+import baseConfig from '../shared/server.base';
 
-module.exports = {
+export default {
   ...baseConfig,
   mode: 'production',
 };

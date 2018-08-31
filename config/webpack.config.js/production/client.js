@@ -1,4 +1,4 @@
-const baseConfig = require('../shared/client.base');
+import baseConfig from '../shared/client.base';
 
 const config = {
   ...baseConfig,
@@ -9,4 +9,4 @@ const config = {
 // overwrite default filename
 config.output.filename = 'bundle.[hash:8].js';
 
-module.exports = config;
+export default config;

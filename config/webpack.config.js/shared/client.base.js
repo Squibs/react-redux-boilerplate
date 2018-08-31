@@ -1,14 +1,14 @@
-const path = require('path');
-const paths = require('../../paths');
-const { client: clientLoaders } = require('./loaders');
-const resolvers = require('./resolvers');
-const plugins = require('./plugins');
+import * as path from 'path';
+import paths from '../../paths';
+import { client as clientLoaders } from './loaders';
+import resolvers from './resolvers';
+import * as plugins from './plugins';
 
-module.exports = {
+export default {
   name: 'client',
   target: 'web',
   entry: {
-    bundle: ['@babel/polyfill', path.resolve(__dirname, '../../../src/client')],
+    bundle: [path.resolve(__dirname, '../../../src/client')],
   },
   output: {
     filename: 'bundle.js',

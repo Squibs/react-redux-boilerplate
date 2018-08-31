@@ -1,5 +1,6 @@
-const chalk = require('chalk');
+import chalk from 'chalk';
 
+// from create-react-app (https://github.com/facebook/create-react-app/blob/next/packages/react-dev-utils/formatWebpackMessages.js#L26)
 const formatMessage = (message, isError) => {
   let lines = message.split('\n');
 
@@ -53,15 +54,17 @@ const formatMessage = (message, isError) => {
   return message.trim();
 };
 
-const formatWebpackMessages = (json) => {
+// from create-react-app (https://github.com/facebook/create-react-app/blob/next/packages/react-dev-utils/formatWebpackMessages.js#L120)
+export const formatWebpackMessages = (json) => {
   const formattedErrors = json.errors.map(message => formatMessage(message, true));
   const formattedWarnings = json.warnings.map(message => formatMessage(message, false));
+
+  const friendlySyntaxErrorLabel = 'Syntax error:';
+
   const result = {
     errors: formattedErrors,
     warnings: formattedWarnings,
   };
-
-  const friendlySyntaxErrorLabel = 'Syntax error:';
 
   function isLikelyASyntaxError(message) {
     return message.indexOf(friendlySyntaxErrorLabel) !== -1;
@@ -74,7 +77,8 @@ const formatWebpackMessages = (json) => {
   return result;
 };
 
-const logMessage = (message, level = 'info') => {
+// console log message with timestamp and color based on danger level
+export const logMessage = (message, level = 'info') => {
   const color = dangerLevel => ({
     error: 'red',
     warning: 'yellow',
@@ -82,9 +86,4 @@ const logMessage = (message, level = 'info') => {
   })[dangerLevel];
 
   console.log(`[${new Date().toLocaleTimeString()}]`, chalk[color(level)](message));
-};
-
-module.exports = {
-  formatWebpackMessages,
-  logMessage,
 };

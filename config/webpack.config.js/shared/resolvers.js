@@ -1,6 +1,6 @@
-const paths = require('../../paths');
+import paths from '../../paths';
 
-module.exports = {
+export default {
   extensions: ['.js', '.mjs', '.jsx', '.json', '.css'],
   modules: paths.resolveModules,
 };

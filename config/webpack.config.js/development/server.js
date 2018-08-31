@@ -1,15 +1,13 @@
-const baseConfig = require('../shared/server.base');
-const webpack = require('webpack');
-const WriteFileWebpackPlugin = require('write-file-webpack-plugin');
+import webpack from 'webpack';
+import baseConfig from '../shared/server.base';
 
 const config = {
   ...baseConfig,
   plugins: [
     ...baseConfig.plugins,
-    // new WriteFileWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
   ],
   mode: 'development',
 };
 
-module.exports = config;
+export default config;

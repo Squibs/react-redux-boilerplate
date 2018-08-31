@@ -7,7 +7,7 @@
   "license": "ISC",
   "scripts": {
     "build": "cross-env NODE_ENV=production babel-node scripts/build.js",
-    "start": "cross-env NODE_ENV=development node --trace-deprecation scripts/start.js",
+    "start": "cross-env NODE_ENV=development babel-node scripts/start.js",
     "webpack": "cross-env NODE_ENV=production webpack --config config/webpack.config.js"
   },
   "devDependencies": {
@@ -38,6 +38,7 @@
     "react-dom": "^16.4.2",
     "react-hot-loader": "^4.3.5",
     "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
     "rimraf": "^2.6.2",

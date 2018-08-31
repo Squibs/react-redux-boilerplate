@@ -1,12 +1,15 @@
-const webpack = require('webpack');
-const ManifestPlugin = require('webpack-manifest-plugin');
-const env = require('../../env')();
+import webpack from 'webpack';
+import ManifestPlugin from 'webpack-manifest-plugin';
+import Visualizer from 'webpack-visualizer-plugin';
+import e from '../../env';
 
+const env = e();
 
-const shared = [];
+export const shared = [
+  new Visualizer(), // right now emits stats.html file, could try using (https://github.com/danvk/source-map-explorer) instead
+];
 
-
-const client = [
+export const client = [
   // expose variables available in project see config/env.js
   new webpack.DefinePlugin(env.stringified),
   // global variables put into process.env
@@ -19,17 +22,9 @@ const client = [
   new ManifestPlugin({ fileName: 'asset-manifest.json' }),
 ];
 
-
-const server = [
+export const server = [
   new webpack.DefinePlugin({
     __SERVER__: 'true',
     __CLIENT__: 'false',
   }),
 ];
-
-
-module.exports = {
-  shared,
-  client,
-  server,
-};
