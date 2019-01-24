@@ -26,8 +26,16 @@ const fontLoaderClient = {
 };
 
 // don't emit files for server
-const fontLoaderServer = fontLoaderClient;
-fontLoaderServer.options.emitFile = false;
+/* spread operator issue I came across (https://bambielli.com/til/2017-01-29-spread-operator-deep-copy/)
+   can't use: const fontLoaderServer = { ...fontLoaderClient };
+              fontLoaderServer.options.emitFile = false;  */
+const fontLoaderServer = {
+  ...fontLoaderClient,
+  options: {
+    ...fontLoaderClient.options,
+    emitFile: false,
+  },
+};
 
 
 /* =========================================
@@ -51,9 +59,15 @@ const imageLoaderClient = {
   ],
 };
 
+console.log(imageLoaderClient, 'CLIENT');
+
 // don't emit files for server
-const imageLoaderServer = imageLoaderClient;
-imageLoaderServer.use[0].options.emitFile = false;
+const imageLoaderServer = JSON.parse(JSON.stringify(imageLoaderClient)); // does not work
+imageLoaderServer.use[0].options.emitFile = false; // does not work
+
+console.log(imageLoaderClient.use[0], 'CLIENT');
+console.log(imageLoaderServer.use[0], 'SERVER');
+console.log(imageLoaderServer);
 
 
 /* ====================================
@@ -69,8 +83,13 @@ const fileLoaderClient = {
 };
 
 // don't emit files for server
-const fileLoaderServer = fileLoaderClient;
-fileLoaderServer.options.emitFile = false;
+const fileLoaderServer = {
+  ...fileLoaderClient,
+  options: {
+    ...fileLoaderClient.options,
+    emitFile: false,
+  },
+};
 
 
 // oneOf: first matching Rule is used when the Rule matches.
